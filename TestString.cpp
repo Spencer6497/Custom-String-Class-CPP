@@ -2,7 +2,7 @@
   File Name: TestString.cpp
   Author: Spencer Peace
   Course: CSC 402-001
-  Date: 02/17/2020
+  Date: 02/23/2020
 */
 
 // Visual Studio-specific deirective to suppress warnings
@@ -12,7 +12,6 @@
 
 // your file must be named String.h
 #include "String.h"
-#include "String.cpp"
 
 using namespace std;
 
@@ -30,7 +29,7 @@ int main() {
 
 
   // single and no-arg constructor tests
-  String str1; 
+  String str1;
   String str2("constructed with a c-string literal");
   const char* c_str { "constructed with a c-string variable" };
   String str3(c_str);
@@ -47,14 +46,15 @@ int main() {
   str7 = str6; 
 
   // move constructor
-  String tmp_str1{ "Source of move constructor" }; 
+  String tmp_str1{ "Source of move constructor" };
   String str8(std::move(tmp_str1));
 
   // move = operator
   String tmp_str2{ "Source of move = operator" };
   String str9;  
   str9 = std::move(tmp_str2);
- 
+
+
   cout << "str1: " << str1 << endl;
   cout << "str2: " << str2 << endl;
   cout << "str3: " << str3 << endl;
@@ -62,6 +62,7 @@ int main() {
   cout << "str5: " << str5 << endl;
   cout << endl;
 
+  /*
   cout << "str6 and str7 are both copies of str5: " << endl;
   cout << "str6: " << str6 << endl;
   cout << "str7: " << str7 << endl;
@@ -78,7 +79,7 @@ int main() {
   //cout << tmp_str2 << endl; 
 
 
-
+  */
   cin.get();
   return 0; 
 }
