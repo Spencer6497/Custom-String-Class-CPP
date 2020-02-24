@@ -62,12 +62,12 @@ int main() {
   cout << "str5: " << str5 << endl;
   cout << endl;
 
-  /*
+
   cout << "str6 and str7 are both copies of str5: " << endl;
   cout << "str6: " << str6 << endl;
   cout << "str7: " << str7 << endl;
   cout << endl; 
-
+/*
   cout << "str8 stole the contents of tmp_str1: " << endl; 
   cout << "str8: " << str8 << endl;
   cout << "str9 stole the contents of tmp_str2: " << endl;

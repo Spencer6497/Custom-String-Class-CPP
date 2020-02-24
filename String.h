@@ -17,12 +17,11 @@ class String {
 private:
     char *str; // data member that holds string contents
 public:
-    // Constructor when passed a c-string variable
-    String(const char* string);
+    // Constructor when passed a c-string variable (also no-arg constructor)
+    explicit String(const char* string = "");
     // Constructor when passed a String as a source
     String(const String&);
     // Empty string constructor
-    String();
     int length();
     bool empty();
     void print(ostream& out = cout);
