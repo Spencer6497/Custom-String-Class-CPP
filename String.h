@@ -25,7 +25,7 @@ public:
     bool empty() { return (strlen(str) == 0) ? true : false; } // one-line function to return if a string is empty or not
     void print(ostream& out = cout) { out << this->str; } // one-line function to print the value of the buffer
     String& operator=(const String& string) noexcept ; // overloaded "=" operator
-    String& operator+(const String& string); // overloaded "+" operator
+    String& operator+(const String& rhs); // overloaded "+" operator
 };
 
 // overloaded << operator for handling output

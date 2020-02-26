@@ -32,8 +32,8 @@ String& String::operator= (const String& stringToAssign) noexcept {
 }
 
 // Overloaded "+" operator
-String& String::operator+(const String& string) {
-    // TODO: Fill out this function
+String& String::operator+(const String& rhs) {
+    // TODO fill out this function
 }
 
 ostream& operator<<(ostream& out, String& print) {
