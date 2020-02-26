@@ -2,7 +2,7 @@
   File Name: String.cpp
   Author: Spencer Peace
   Course: CSC 402-001
-  Date: 02/23/2020
+  Date: 02/26/2020
 */
 
 #include "String.h"
@@ -21,17 +21,19 @@ String::String(const String &source){
     strcpy(str, source.str);
 }
 
-// Function that returns number of characters in the string
-int String::length() {
-    return strlen(str);
+// Overloaded "=" operator
+String& String::operator= (const String& stringToAssign) noexcept {
+    if (this != &stringToAssign) {
+        delete[] str; // Clear the buffer
+        str = new char[strlen(stringToAssign.str) + 1]; // Make room for the new string
+        strcpy(str, stringToAssign.str); // Copy it
+    }
+    return *this;
 }
 
-bool String::empty() {
-    return (strlen(str) == 0) ? true : false;
-}
-
-void String::print(ostream& out) {
-    out << this->str;
+// Overloaded "+" operator
+String& String::operator+(const String& string) {
+    // TODO: Fill out this function
 }
 
 ostream& operator<<(ostream& out, String& print) {

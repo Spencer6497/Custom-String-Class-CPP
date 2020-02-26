@@ -2,7 +2,7 @@
   File Name: TestString.cpp
   Author: Spencer Peace
   Course: CSC 402-001
-  Date: 02/23/2020
+  Date: 02/26/2020
 */
 
 // Visual Studio-specific deirective to suppress warnings
@@ -62,6 +62,8 @@ int main() {
   cout << "str5: " << str5 << endl;
   cout << endl;
 
+  /*Test functions
+  cout << "is str5 empty? " << str5.empty() << endl;*/
 
   cout << "str6 and str7 are both copies of str5: " << endl;
   cout << "str6: " << str6 << endl;
