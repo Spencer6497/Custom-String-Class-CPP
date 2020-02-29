@@ -2,7 +2,7 @@
   File Name: TestString.cpp
   Author: Spencer Peace
   Course: CSC 402-001
-  Date: 02/26/2020
+  Date: 02/29/2020
 */
 
 // Visual Studio-specific deirective to suppress warnings
@@ -62,14 +62,16 @@ int main() {
   cout << "str5: " << str5 << endl;
   cout << endl;
 
-  /*Test functions
-  cout << "is str5 empty? " << str5.empty() << endl;*/
+  // Test functions
+  char* testStr = (char *) "String";
+  //String testStr = *new String("String");
+  cout << testStr[0] << endl;
 
   cout << "str6 and str7 are both copies of str5: " << endl;
   cout << "str6: " << str6 << endl;
   cout << "str7: " << str7 << endl;
   cout << endl; 
-/*
+
   cout << "str8 stole the contents of tmp_str1: " << endl; 
   cout << "str8: " << str8 << endl;
   cout << "str9 stole the contents of tmp_str2: " << endl;
@@ -81,7 +83,7 @@ int main() {
   //cout << tmp_str2 << endl; 
 
 
-  */
+
   cin.get();
   return 0; 
 }

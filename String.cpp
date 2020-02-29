@@ -2,7 +2,7 @@
   File Name: String.cpp
   Author: Spencer Peace
   Course: CSC 402-001
-  Date: 02/26/2020
+  Date: 02/29/2020
 */
 
 #include "String.h"
@@ -31,10 +31,55 @@ String& String::operator= (const String& stringToAssign) noexcept {
     return *this;
 }
 
-// Overloaded "+" operator
-String& String::operator+(const String& rhs) {
-    // TODO fill out this function
+// Overloaded "=" operator (move operation).
+String& String::operator=(const String &&string) noexcept {
+    str = nullptr; // make original object invalid
+    str = new char[strlen(string.str) + 1];
+    strcpy(str, string.str);
+    return *this;
 }
+
+// Implement clear method
+void String::clear() {
+    delete[] str;
+    str = (char *) "";
+}
+
+// Implement append mutator functions
+String& String::append(const String &str) {
+    // create temp variable which will become the new buffer
+    char *temp = new char[strlen(this->str)];
+    strcpy(temp, this->str);
+    delete[] this->str;
+    this->str = temp;
+    strcat(this->str, str.str);
+    return *this;
+}
+
+String& String::append(const char *s) {
+    char *temp = new char[strlen(s)];
+    strcpy(temp, this->str);
+    delete[] this->str;
+    this->str = temp;
+    strcat(this->str, s);
+    return *this;
+}
+
+// Overloaded "+" operator such that it appends the string without changing the original or argument
+String& String::operator+(const String& rhs) {
+    char *temp = new char[strlen(rhs.str)];
+    strcpy(temp, this->str);
+    strcat(temp, rhs.str);
+    return *new String(temp);
+}
+
+// Overloaded [] operator to return a character at a given index
+const char* String::operator[](int index) const {
+    return (char *) this->str[index];
+}
+
+// Overloaded [] operator to set a character at a given index
+// TODO fill this out
 
 ostream& operator<<(ostream& out, String& print) {
     print.print(out);
