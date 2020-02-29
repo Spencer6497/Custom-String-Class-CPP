@@ -36,14 +36,13 @@ int main() {
   // intializer list syntax  
   String str4 { "I am str4" };
 
-  String str5 { "str5 as the source of a copy" }; 
+  String str5 { "str5 as the source of a copy" };
   // copy constructor
   String str6(str5);
 
-
   // copy = operator
   String str7; 
-  str7 = str6; 
+  str7 = str6;
 
   // move constructor
   String tmp_str1{ "Source of move constructor" };
@@ -62,11 +61,6 @@ int main() {
   cout << "str5: " << str5 << endl;
   cout << endl;
 
-  // Test functions
-  char* testStr = (char *) "String";
-  //String testStr = *new String("String");
-  cout << testStr[0] << endl;
-
   cout << "str6 and str7 are both copies of str5: " << endl;
   cout << "str6: " << str6 << endl;
   cout << "str7: " << str7 << endl;
@@ -79,10 +73,8 @@ int main() {
   cout << endl;
 
   // to test that these objects are invalid, uncomment these statements
-  //cout << tmp_str1 << endl; 
-  //cout << tmp_str2 << endl; 
-
-
+  //cout << tmp_str1 << endl;
+  //cout << tmp_str2 << endl;
 
   cin.get();
   return 0; 

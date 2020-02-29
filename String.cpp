@@ -15,34 +15,41 @@ String::String(const char* string) {
     strcpy(str, string); // archaic copy of string to data member
 }
 
-// Constructor for a string given another string's value
+// Constructor for a string given another string's value (copy constructor)
 String::String(const String &source){
     str = new char[strlen(source.str) + 1];
     strcpy(str, source.str);
 }
 
-// Overloaded "=" operator
-String& String::operator= (const String& stringToAssign) noexcept {
-    if (this != &stringToAssign) {
-        delete[] str; // Clear the buffer
-        str = new char[strlen(stringToAssign.str) + 1]; // Make room for the new string
-        strcpy(str, stringToAssign.str); // Copy it
-    }
+// Constructor for a string given stealing another string's value (move constructor)
+String::String(String&& stealString) noexcept {
+    str = new char[strlen(stealString.str) + 1];
+    strcpy(str, stealString.str);
+    stealString.str = nullptr;
+}
+
+// Overloaded "=" operator (copy operation)
+String& String::operator= (const String& stringToAssign) {
+    delete[] str; // Clear the buffer
+    str = new char[strlen(stringToAssign.str) + 1]; // Make room for the new string
+    strcpy(str, stringToAssign.str); // Copy it
     return *this;
 }
 
 // Overloaded "=" operator (move operation).
-String& String::operator=(const String &&string) noexcept {
-    str = nullptr; // make original object invalid
-    str = new char[strlen(string.str) + 1];
-    strcpy(str, string.str);
+String& String::operator=(const String&& string) noexcept {
+    if (this != &string) {
+        delete[] this->str;
+        this->str = new char[strlen(string.str) + 1];
+        strcpy(this->str, string.str);
+    }
     return *this;
 }
 
 // Implement clear method
 void String::clear() {
     delete[] str;
-    str = (char *) "";
+    str = new char[1]{*""};
 }
 
 // Implement append mutator functions
@@ -74,14 +81,16 @@ String& String::operator+(const String& rhs) {
 }
 
 // Overloaded [] operator to return a character at a given index
-const char* String::operator[](int index) const {
-    return (char *) this->str[index];
+const char& String::operator[](int index) const {
+    return str[index];
 }
 
 // Overloaded [] operator to set a character at a given index
-// TODO fill this out
+char& String::operator[](int index) {
+    return str[index];
+}
 
-ostream& operator<<(ostream& out, String& print) {
+ostream& operator<<(ostream& out, const String& print) {
     print.print(out);
     return out;
 }
